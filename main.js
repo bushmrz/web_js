@@ -182,6 +182,22 @@ calendar.drawCalendar(
     calendar.selectedDate.Month,
     calendar.selectedDate.Year);
 }
+
+/* ----------------------- Задание 3 --------------------------- */
+/* подсчитывание элементов в форме */
+function myFunc() {
+    var count = document.querySelectorAll(".formaa").length;
+    var num = document.querySelectorAll(".forma-num").length;
+    var name = document.getElementsByName("Sel1").length;
+    var fio = document.getElementsByTagName("table").length;
+    var tr = document.getElementsByTagName("tr").length;
+    var td = document.getElementsByTagName("td").length;
+    var checkbox = document.getElementsByName("ch").length;
+    var option = document.getElementsByTagName("option").length;
+    sum = count + num + name + fio + tr + td + checkbox + option;
+    document.write(sum);
+}
+
 /* ----------------------- Задание 4 --------------------------- */
 function color(){
     window.onload = function() {
@@ -206,6 +222,47 @@ function color_rand(){
         }, 150)
 }
 
+/* ----------------------- Задание 5 --------------------------- */
+function Add(){
+    const data = document.getElementById("list");
+    let task;
+    while (task = prompt("Введите пункт списка:"))
+        data.insertAdjacentHTML("beforeend", `<li>${task}</li>`);
+}
+
+
+
+/* 6666666666666666666666666666666 */
+
+function ex6(){
+    const image = document.querySelector('#image1');
+
+    image.addEventListener('mouseover', () => {
+        image.style.transform = 'translateX(50px)';
+    });
+
+    image.addEventListener('mouseout', () => {
+        image.style.transform = 'none';
+    });
+
+}
+
+/* ----------------------- Задание 7 --------------------------- */
+function end() {
+    document.getElementById("menu").innerText = "Сладости закончились"
+}
+
+function hide(end) {
+    let a = 0
+    document.getElementById("menu_ul").onclick = function(event) {
+        a++
+        event.target.style.opacity = "0";
+        event.target.style.transition = "opacity, 0.5s";
+        if (a==5)
+            end()
+    }
+}
+
 /* ----------------------- Задание 8 --------------------------- */
 function ex8(){
     const img=document.querySelector("#logo");
@@ -215,4 +272,115 @@ function ex8(){
     logo.addEventListener('mouseout',function(){
     img.style.opacity = '1';})
 }
+
+function Complete(){
+    let checkEmail = function(userEmail){
+        const rexEmail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+        return rexEmail.test(userEmail);
+    }
+
+    var Elem="\nИмя: " + document.Sel1.Name.value +
+        "\nПароль: " + document.Sel1.Password_One.value +
+        "\nEmail: " + document.Sel1.Email.value +
+        "\nТелефон: " + document.Sel1.Phone.value +
+        "\nПол: " + document.Sel1.Code.value +
+        "\nВаша специализация: " + document.Sel1.mySelect.value +
+        "\nСтрана: " + document.Sel1.mySelect2.value;
+
+    if (checkEmail(document.Sel1.Email.value) &&  (document.Sel1.Password_One.value==document.Sel1.Password_Two.value))
+        alert(Elem);
+    else
+        alert("Ошибка при вводе \nПопробуйте еще раз");
+}
+
+
+function regPassword(){
+    var Password_One = document.getElementById("Password_One").value;
+    var pas_regV = /^[a-z0-9]{6,}$/gi;
+    if (Password_One.match(pas_regV) == null){
+        document.getElementById("divPassword").innerHTML = "Пожалуйста, введите пароль в формате: aaahhh";
+        document.getElementById("Password_One").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divPassword").innerHTML = "";
+        document.getElementById("Password_One").style.border="2px solid green";
+    }
+
+    var Password_Two = document.getElementById("Password_Two").value;
+    var pas_regV = /^[a-z0-9]{6,}$/gi;
+    if (Password_Two.match(pas_regV) == null){
+        document.getElementById("divPassword_Two").innerHTML = "Пожалуйста, введите совпадающие пароли!";
+        document.getElementById("Password_Two").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divPassword_Two").innerHTML = "";
+        document.getElementById("Password_Two").style.border="2px solid green";
+    }
+}
+
+function regPhone(){
+    var Phone = document.getElementById("Phone").value;
+    var phone_regV = /^\d[\d\(\)\ -]{4,9}\d$/;
+    if (Phone.match(phone_regV) == null){
+        divPhone.innerHTML = 'Пожалуйста, введите правильный номер телефона!'
+        document.getElementById("Phone").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divPhone").innerHTML = "";
+        document.getElementById("Phone").style.border="2px solid green";
+    }
+}
+
+function regName(){
+    var Name = document.getElementById("Name").value;
+    var name_regV = /[а-яА-я]+$/gi;
+    if (Name.match(name_regV) == null){
+        divName.innerHTML = "Пожалуйста, введите имя в формате: Иван!"
+        document.getElementById("Name").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divName").innerHTML = "";
+        document.getElementById("Name").style.border="2px solid green";
+    }
+}
+
+function regFacultet(){
+    var facultet = document.getElementById("facultet").value;
+    var facultet_regV = /[а-яА-я]+$/gi;
+    if (facultet.match(facultet_regV) == null){
+        divFacultet.innerHTML = "Пожалуйста, введите корректное название факультета!"
+        document.getElementById("facultet").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divFacultet").innerHTML = "";
+        document.getElementById("facultet").style.border="2px solid green";
+    }
+}
+
+function regCafedra(){
+    var cafedra = document.getElementById("cafedra").value;
+    var cafedra_regV = /[а-яА-я]+$/gi;
+    if (cafedra.match(cafedra_regV) == null){
+        divCafedra.innerHTML = "Пожалуйста, введите корректное название кафедры!"
+        document.getElementById("cafedra").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divCafedra").innerHTML = "";
+        document.getElementById("cafedra").style.border="2px solid green";
+    }
+}
+
+function regEmail(){
+    var Email = document.getElementById("Email").value;
+    var Email_regV = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+    if (Email.match(Email_regV) == null){
+        divEmail.innerHTML = "Пожалуйста, введите корректый email!"
+        document.getElementById("Email").style.border="2px solid red";
+    }
+    else {
+        document.getElementById("divEmail").innerHTML = "";
+        document.getElementById("Email").style.border="2px solid green";
+    }
+}
+
 
