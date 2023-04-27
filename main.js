@@ -289,17 +289,21 @@ function Complete(){
 
     if (checkEmail(document.Sel1.Email.value) &&  (document.Sel1.Password_One.value==document.Sel1.Password_Two.value))
         alert(Elem);
-    else
-        alert("Ошибка при вводе \nПопробуйте еще раз");
 }
+
+
 
 
 function regPassword(){
     var Password_One = document.getElementById("Password_One").value;
     var pas_regV = /^[a-z0-9]{6,}$/gi;
     if (Password_One.match(pas_regV) == null){
-        document.getElementById("divPassword").innerHTML = "Пожалуйста, введите пароль в формате: aaahhh";
+        document.getElementById("divPassword").innerHTML = "Длина пароля от 8 символов," +
+            "  пароль должен включать латин. буквы и цифры";
         document.getElementById("Password_One").style.border="2px solid red";
+        if (Password_One.length > 7){
+            document.getElementById("divPassword_One").innerHTML = "";
+            document.getElementById("Password_One").style.border="2px solid green";}
     }
     else {
         document.getElementById("divPassword").innerHTML = "";
@@ -307,11 +311,16 @@ function regPassword(){
     }
 
     var Password_Two = document.getElementById("Password_Two").value;
-    var pas_regV = /^[a-z0-9]{6,}$/gi;
-    if (Password_Two.match(pas_regV) == null){
+    var pas_regV_two = /^[a-z0-9]{6,}$/gi;
+    if (Password_Two.match(pas_regV_two) == null || Password_Two !== Password_One){
         document.getElementById("divPassword_Two").innerHTML = "Пожалуйста, введите совпадающие пароли!";
         document.getElementById("Password_Two").style.border="2px solid red";
+        if (Password_Two === Password_One && Password_Two.length > 0){
+            document.getElementById("divPassword_Two").innerHTML = "";
+            document.getElementById("Password_Two").style.border="2px solid green";
+        }
     }
+
     else {
         document.getElementById("divPassword_Two").innerHTML = "";
         document.getElementById("Password_Two").style.border="2px solid green";
@@ -335,7 +344,7 @@ function regName(){
     var Name = document.getElementById("Name").value;
     var name_regV = /[а-яА-я]+$/gi;
     if (Name.match(name_regV) == null){
-        divName.innerHTML = "Пожалуйста, введите имя в формате: Иван!"
+        divName.innerHTML = "Пожалуйста, введите имя в формате: Иван !"
         document.getElementById("Name").style.border="2px solid red";
     }
     else {
@@ -382,5 +391,3 @@ function regEmail(){
         document.getElementById("Email").style.border="2px solid green";
     }
 }
-
-
